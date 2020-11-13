@@ -2,7 +2,7 @@ import React from 'react';
  
 const LandingPage = () => (
   <div>
-    <h1>Environmental Impact of Product</h1>
+    <h1>One Carbon Label</h1>
   </div>
 );
  

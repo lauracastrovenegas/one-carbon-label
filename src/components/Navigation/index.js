@@ -1,25 +1,55 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components'
  
 import * as ROUTES from '../../constants/routes';
+
+const NavWrapper = styled.div`
+  background-color: black;
+  color: white;
+  display: flex;
+`;
+
+const Button = styled.a`
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  padding: 1rem 0.5rem;
+  margin: 0rem 0rem;
+  width: 11rem;
+  background: transparent;
+  color: white;
+
+  :hover {
+    color: gray;
+  }
+
+  :active {
+    color: gray;
+  }
+
+  @media (max-width: 320px) {
+    width: 5rem;
+  }
+`
  
 const Navigation = () => (
-  <div>
-    <ul>
-      <li>
-        <Link to={ROUTES.LANDING}>Product Profile</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.HOME}>Home</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.CONTACT_US}>Contact Us</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.FAQ}>Frequently Asked Questions</Link>
-      </li>
-    </ul>
-  </div>
+  <NavWrapper>
+    <nav>
+        <Button href={ROUTES.LANDING}>
+            One Carbon Label
+        </Button>
+        <Button href={ROUTES.HOME}>
+            Home
+        </Button>
+        <Button href={ROUTES.CONTACT_US}>
+            Contact Us
+        </Button>
+        <Button href={ROUTES.FAQ}>
+            FAQs
+        </Button>
+      </nav>
+  </NavWrapper>
 );
  
 export default Navigation;
