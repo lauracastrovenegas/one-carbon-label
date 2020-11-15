@@ -39,15 +39,6 @@ const Navigation = () => (
         <Button href={ROUTES.LANDING}>
             One Carbon Label
         </Button>
-        <Button href={ROUTES.HOME}>
-            Home
-        </Button>
-        <Button href={ROUTES.CONTACT_US}>
-            Contact Us
-        </Button>
-        <Button href={ROUTES.FAQ}>
-            FAQs
-        </Button>
       </nav>
   </NavWrapper>
 );
