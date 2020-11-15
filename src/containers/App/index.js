@@ -14,10 +14,12 @@ import * as ROUTES from '../../constants/routes';
  
 const App = () => (
     <Router>
+        <main>
         <div>
             <Navigation />
             <Route exact path={ROUTES.LANDING} component={HomePage} />
         </div>
+        </main>
     </Router>
 );
  
