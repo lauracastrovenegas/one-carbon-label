@@ -6,7 +6,7 @@ import {
 import Navigation from '../../components/Navigation';
 
 import LandingPage from '../Landing/index';
-//import HomePage from '../Home';
+import HomePage from '../Home';
 //import FaqPage from '../FAQ';
 //import ContactUsPage from '../ContactUs';
 
@@ -16,7 +16,7 @@ const App = () => (
     <Router>
         <div>
             <Navigation />
-            <Route exact path={ROUTES.LANDING} component={LandingPage} />
+            <Route exact path={ROUTES.LANDING} component={HomePage} />
         </div>
     </Router>
 );
