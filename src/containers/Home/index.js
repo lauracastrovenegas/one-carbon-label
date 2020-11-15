@@ -6,7 +6,7 @@ const Home = () => (
     <h1>Home</h1>
     <MainBox
       score= "70"
-      qrCode= "QRCode Here"
+      qrCode= "http://facebook.github.io/react/"
       materials="20.3"
       manufacturing="37.8"
       use="9.8"

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import QRCode from 'qrcode.react';
 
 export const MainBox = ({score, qrCode, materials, manufacturing, use, transport, endOfLife}) =>{
     return (
@@ -7,7 +8,7 @@ export const MainBox = ({score, qrCode, materials, manufacturing, use, transport
             <Column>
                 <h1>{score}</h1>
                 <p>kg CO2E</p>
-                <div>{qrCode}</div>
+                <div><QRCode value={qrCode}/></div>
             </Column>
             <hr></hr>
             <Column>
@@ -53,14 +54,22 @@ const Container = styled.div`
         width:0;
         border:1px solid black;
     }
+
+    svg {
+        width: 50%; 
+        height: auto;
+    }
 `;
 
 const Column = styled.div`
-    padding: 10px;
+    padding: 20px 20px 20px 10px;
+    margin: auto 0 auto 0;
 
-    div{
-        padding: 2px;
+    p{
+        margin-top: 0px;
+        margin-bottom: 2rem;
     }
+
 `;
 
 const Row = styled.div`
@@ -76,6 +85,7 @@ const Row = styled.div`
 
     h2{
         margin: 5px;
+        font-size: 2rem;
     }
 
 `;
