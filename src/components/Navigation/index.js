@@ -8,6 +8,10 @@ const NavWrapper = styled.div`
   background-color: black;
   color: white;
   display: flex;
+
+  nav.vertical{
+    height: 100%;
+  }
 `;
 
 const Button = styled.a`
@@ -39,7 +43,7 @@ const Navigation = () => (
         <Button href={ROUTES.LANDING}>
             One Carbon Label
         </Button>
-      </nav>
+    </nav>
   </NavWrapper>
 );
  

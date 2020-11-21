@@ -4,12 +4,13 @@ import MainBox from '../../components/MainContentBox/index';
 import GlanceBox from '../../components/AtAGlance/index';
  
 const Home = () => {
-  const name = 'Name of Product';
+  const name = 'Oatly Oat-Milk 64floz';
   return(
   <Container>
     <WhiteContainer>
     <h1>{name}</h1>
-    <p>Summary of Environmental Impact</p>
+    <p2>Summary of Environmental Impact</p2>
+    <Row>
       <MainBox
         score= "70"
         qrCode= "http://facebook.github.io/react/"
@@ -20,9 +21,9 @@ const Home = () => {
         endOfLife="0.7"
       />
       <GlanceBox
-        tags = {['gluten']}
+        tags = {['gluten','gmo','vegan']}
       />
-
+      </Row>
       </WhiteContainer>
   </Container>
   );
@@ -49,4 +50,21 @@ const WhiteContainer = styled.div`
   border-radius: 28px;
   border: 5px solid white;
   padding: 10px;
+  
+  p2{
+    color: #5a5e63;
+    margin-bottom: 2rem;
+  }
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+
+  @media only screen 
+    and (max-width : 768px) {
+      display: flex;
+      flex-direction: column;
+  }
 `;

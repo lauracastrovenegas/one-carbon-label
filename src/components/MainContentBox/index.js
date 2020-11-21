@@ -52,7 +52,6 @@ const InnerBox = ({materials, manufacturing, use, transport, endOfLife}) =>{
 const InnerContainer = styled.main`
     display: flex;
     flex-direction: row;
-    padding: 0;
 `;
 
 const Container = styled.main`
@@ -63,23 +62,31 @@ const Container = styled.main`
     flex-direction: row;
     padding: 0.1rem 0px 0.1rem 0.5rem;
     background-color: white;
-    width: auto;
+    width: fit-contents;
 
     h1{
         margin: 1.5rem 0 0rem 0;
-        font-size: 5rem;
+        font-size: 6vw;
         font-weight: 500;
         text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     p{
         text-align: center;
+        font-size: 1vw;
+        margin:0;
     }
 
     hr.vertical {
         height:100%; 
         width:0;
         border:1px solid black;
+        margin-block-start: 0.5em;
+        margin-block-end: 0.5em;
+        margin-inline-start: 0rem !important;
+        margin-inline-end: 0rem;
     }
 
     svg {
@@ -91,6 +98,7 @@ const Container = styled.main`
     and (max-width : 768px) {
         flex-direction: column;
         padding: 0.2rem 0.6rem 1.2rem; 0.6rem;
+        width: auto;
 
         hr {
             width:95%;
@@ -99,24 +107,30 @@ const Container = styled.main`
 
         h1{
             margin: 0.3rem 0 0rem 0;
+            font-size: 5rem;
+        }
+
+        p{
+            font-size: 0.9rem;
         }
 
     }
 `;
 
 const Column = styled.div`
-    padding: 0.5rem 1.2rem 0.5rem 0.6rem;
+    padding: 0.2rem 1rem 0.2rem 0.5rem;
     margin: 0rem 0 0 0;
 
     p{
         margin-top: 0rem;
         margin-bottom: 1rem;
+        font-size: 1vw;
     }
 
     canvas{
         margin: 1rem 0 auto auto;
-        height: 6rem !important;
-        width: 6rem !important; 
+        height: 7vw !important;
+        width: 7vw !important; 
     }
 
     @media only screen 
@@ -128,6 +142,7 @@ const Column = styled.div`
         p{
             margin-top: 0rem;
             margin-bottom: 0.3rem;
+            font-size: 0.9rem;
         }
         canvas{
             margin: auto 0 auto auto;
@@ -139,7 +154,7 @@ const Column = styled.div`
 `;
 
 const InnerColumn = styled.div`
-    padding: 20px 20px 20px 10px;
+    padding: 10px 10px 10px 10px;
     margin: auto 0 auto 0;
 
     @media only screen 
@@ -159,7 +174,7 @@ const Row = styled.div`
     flex-direction: row;
 
     p{
-        margin: 1.5rem 0 auto 0;
+        margin: auto 0 auto 0;
         padding-left: 0px;
         font-size: 0.2rem;
         @media only screen 
@@ -175,7 +190,7 @@ const Row = styled.div`
 
     h2{
         margin: 0.4rem;
-        font-size: 2rem;
+        font-size: 2vw;
         @media only screen 
         and (max-width : 768px) {
             font-size: 1.4rem;

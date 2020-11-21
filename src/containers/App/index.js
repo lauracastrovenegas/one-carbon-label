@@ -16,13 +16,26 @@ import * as ROUTES from '../../constants/routes';
 const App = () => (
     <Router>
         <main>
-        <div>
-            <Navigation />
-            <Route exact path={ROUTES.LANDING} component={HomePage} />
-        </div>
+            <PageWrapper>
+                <Navigation />
+                <Route exact path={ROUTES.LANDING} component={HomePage} />
+            </PageWrapper>
         </main>
     </Router>
 );
  
 export default App;
+
+const PageWrapper = styled.div`
+    @media only screen 
+    and (min-width : 768px) {
+        display: flex;
+    }
+
+    background: white;
+  border-radius: 28px;
+  border: 5px solid white;
+  padding: 10px;
+  
+`;
 
