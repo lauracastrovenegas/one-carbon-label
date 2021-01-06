@@ -20,7 +20,7 @@ export const LandingPage =  () => {
   const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`https://firestore.googleapis.com/v1/projects/onecarbonlabel/databases/(default)/documents/reviews/`, {
+        fetch(`/api/revies`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -50,6 +50,7 @@ export const LandingPage =  () => {
           <p>{review.id}</p>
           <h2>{review.name}</h2>
           <p>{review.co2}</p>
+          <a href={`/${review._id}`}>link to </a>
         </div>
       )))} 
     </div>

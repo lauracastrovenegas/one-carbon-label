@@ -12,32 +12,34 @@ const Home = () => {
 
     useEffect(() => {
         window.addEventListener("resize", () => setWidth(window.innerWidth));
-        fetch(`https://firestore.googleapis.com/v1/projects/onecarbonlabel/databases/(default)/documents/reviews/${id}`, {
+        fetch(`/api/reviews/${id}`, {
             method: 'GET',
             })
           .then((res) => res.json())
           .then((response) => {
             setProduct(response);
             setLoading(false);
-            console.log(`https://firestore.googleapis.com/v1/projects/onecarbonlabel/databases/(default)/documents/reviews/${id}`);
+            console.log(`/api/reviews/${id}`);
           })
           .catch((error) => console.log(error));
     }, [id]);
 
   return(
+    <>
+      {!isLoading && (
   <Container>
     <WhiteContainer>
     <h1>{product.name}</h1>
     <p2>Summary of Environmental Impact</p2>
     <Row>
       <MainBox
-        score= "70"
-        qrCode= {`/${product.id}`}
+        score= {product.score}
+        qrCode= {`/${product._id}`}
         materials={product.materials}
         manufacturing={product.manufacturing}
-        use="9.8"
-        transport="1.4"
-        endOfLife="0.7"
+        use={product.use}
+        transport={product.transport}
+        endOfLife={product.endOfLife}
       />
       <GlanceBox
         tags = {['gluten','gmo','vegan']}
@@ -45,6 +47,8 @@ const Home = () => {
       </Row>
       </WhiteContainer>
   </Container>
+    )}
+  </>
   );
 };
 

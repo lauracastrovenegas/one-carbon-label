@@ -5,7 +5,7 @@ const path = require('path')
 const app = express()
 const PORT = process.env.PORT || 8080
 
-const clubProfileRoutes = require('./routes/clubProfileRoutes')
+const reviewProfileRoutes = require('./routes/reviewProfileRoutes')
 
 // requiring db connection
 const db = require('./models')
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 // routes
-app.use('/api/clubProfiles', clubProfileRoutes)
+app.use('/api/reviews', reviewProfileRoutes)
 
 app.use(express.static(path.join(__dirname, '../client/build')))
 // Anything that doesn't match the above, send back index.html

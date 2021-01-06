@@ -1,9 +1,68 @@
 const reviewProfile = require("../models/ReviewProfileModel")
 
+const shuffle = (sourceArray) => {
+    for (var i = 0; i < sourceArray.length - 1; i++) {
+        var j = i + Math.floor(Math.random() * (sourceArray.length - i));
+
+        var temp = sourceArray[j];
+        sourceArray[j] = sourceArray[i];
+        sourceArray[i] = temp;
+    }
+    return sourceArray;
+}
+
+const findSimilarReviews = (res, reviewResult) => {
+    reviewProfile.aggregate([
+      {
+        '$match': { '$and': [
+          {
+            'tags': {
+              '$in': reviewResult.tags
+            }
+          },
+          {
+            '_id': { '$ne': reviewResult._id }
+          }
+        ]
+        }
+      }, {
+        '$addFields': {
+          'intersection': {
+            '$setIntersection': [
+              '$tags', reviewResult.tags
+            ]
+          }
+        }
+      }, {
+        '$addFields': {
+          'length': {
+            '$size': '$intersection'
+          }
+        }
+      }, {
+        '$sort': {
+          'length': -1
+        }
+      }, {
+        '$limit': 6
+      }, {
+        '$project': {
+          '_id': 1,
+          'name': 1,
+        }
+      }
+    ]).exec()
+      .then(similarReviews => {
+        reviewResult.set('similarReviews', similarReviews)
+        res.json(reviewResult)
+      })
+      .catch(err => res.status(422).json(err));
+}
+
 module.exports = {
     getAll: function(req, res) {
         reviewProfile.find({})
-            .select({_id: 1, name: 1, shortDescription: 1, imageUrl: 1, tags: 1, memberRange: 1, acceptingMembers: 1, applicationRequired: 1})
+            .select({_id: 1, name: 1})
             .then(rdata => {
                 var data = JSON.parse(JSON.stringify(rdata))
                 var shuffledData = shuffle(data);
@@ -15,7 +74,7 @@ module.exports = {
     getById: function(req, res) {
         // TODO; req.params.id
         reviewProfile.findById( {_id: req.params.id} )
-                .then(review => findSimilarClubs(res, review))
+                .then(review => findSimilarReviews(res, review))
                 .catch(err => res.status(422).json(err));
     },
     create: function(req, res) {
@@ -38,13 +97,4 @@ module.exports = {
                 .catch(err => res.status(422).json(err))
                 
     },
-    filterAndSortBy: function(req, res) {
-        // TODO; req.query contains filter and/or sort information
-        // support pagination with req.query 
-        
-    },
-    search: function(req, res) {
-        // TODO; req.query contains search query
-        // support pagination with req.query 
-    }
 }
