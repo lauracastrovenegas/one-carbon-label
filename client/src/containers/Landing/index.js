@@ -12,9 +12,8 @@ const LandingPage = () => (
 );
  
 export default LandingPage;*/
-import firebase from '../../components/Firebase/firebase';
-import 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
+import MainBox from '../../components/MainContentBox/index';
 
 export const LandingPage =  () => {
   const [reviews, setReviews] = useState([]);
@@ -52,7 +51,16 @@ export const LandingPage =  () => {
           <p>{review.co2}</p>
           <a href={`/${review._id}`}>link to </a>
         </div>
-      )))} 
+      )))}
+      <MainBox
+        score={7}
+        qrCode=""
+        materials={9}
+        manufacturing={8}
+        use={9}
+        transport={9}
+        endOfLife={8.9}
+      ></MainBox> 
     </div>
    )
 }
