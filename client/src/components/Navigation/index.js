@@ -5,9 +5,18 @@ import styled from 'styled-components'
 import * as ROUTES from '../../constants/routes';
 
 const NavWrapper = styled.div`
-  background-color: black;
-  color: white;
   display: flex;
+  color: black;
+
+  nav.vertical{
+    height: 100%;
+  }
+
+  @media only screen 
+  and (max-width : 768px) {
+    background-color: black;
+    color: white;
+  }
 `;
 
 const Button = styled.a`
@@ -39,7 +48,7 @@ const Navigation = () => (
         <Button href={ROUTES.LANDING}>
             One Carbon Label
         </Button>
-      </nav>
+    </nav>
   </NavWrapper>
 );
  
