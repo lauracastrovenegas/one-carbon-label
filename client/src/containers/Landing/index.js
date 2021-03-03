@@ -20,7 +20,7 @@ export const LandingPage =  () => {
   const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`/api/revies`, {
+        fetch(`/api/reviews`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

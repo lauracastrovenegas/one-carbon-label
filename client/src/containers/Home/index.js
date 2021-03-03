@@ -27,26 +27,26 @@ const Home = () => {
   return(
     <>
       {!isLoading && (
-  <Container>
-    <WhiteContainer>
-    <h1>{product.name}</h1>
-    <p2>Summary of Environmental Impact</p2>
-    <Row>
-      <MainBox
-        score= {product.score}
-        qrCode= {`/${product._id}`}
-        materials={product.materials}
-        manufacturing={product.manufacturing}
-        use={product.use}
-        transport={product.transport}
-        endOfLife={product.endOfLife}
-      />
-      <GlanceBox
-        tags = {['gluten','gmo','vegan']}
-      />
-      </Row>
-      </WhiteContainer>
-  </Container>
+        <Container>
+          <WhiteContainer>
+          <h1>{product.name}</h1>
+          <p2>Summary of Environmental Impact</p2>
+          <Row>
+            <MainBox
+              score= {product.score}
+              qrCode= {`/${product._id}`}
+              materials={product.materials}
+              manufacturing={product.manufacturing}
+              use={product.use}
+              transport={product.transport}
+              endOfLife={product.endOfLife}
+            />
+            <GlanceBox
+              tags = {['gluten','gmo','vegan']}
+            />
+            </Row>
+            </WhiteContainer>
+        </Container>
     )}
   </>
   );
